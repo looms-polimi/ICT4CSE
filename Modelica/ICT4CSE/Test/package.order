@@ -1,2 +1,3 @@
 test_polyadd
-test_polyconv
+test_polymul
+test_polypow

@@ -1,13 +1,11 @@
 within ICT4CSE.Functions;
 
-function impliciteuler
+function polymul
   extends Modelica.Icons.Function;
 
-  input Real[:] ctnum "continuous-time TF numerator (dec pwr)";
-  input Real[:] ctden "continuous-time TF denominator (dec pwr)";
-  input Real Ts "sampling time";
-  input Real[:] dtnum "discrete-time TF numerator (dec pwr)";
-  input Real[:] dtden "discrete-time TF denominator (dec pwr)";
+  input Real[:] cp1 "coeffs of poly 1 (dec pwr)";
+  input Real[:] cp2 "coeffs of poly 2 (dec pwr)";
+  output Real[size(cp1,1)+size(cp2,1)-1] cpo  "coeffs of product (dec pwr)";
 protected 
   Integer n1,n2;  
 algorithm
@@ -24,4 +22,4 @@ algorithm
     end for;
 end for;
 
-end impliciteuler;
+end polymul;
