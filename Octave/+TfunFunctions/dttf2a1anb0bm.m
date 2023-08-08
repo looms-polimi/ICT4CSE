@@ -11,5 +11,7 @@ degden = length(den)-1;
 reldeg = degden-degnum;
 a      = -den(2:end)/den(1);
 b      = [zeros(1,reldeg),num/den(1)];
-
+while abs(b(end))<1e-9
+   b = b(1:end-1);
+endwhile;
 endfunction

@@ -9,6 +9,7 @@ function c2d_a1anb0bm_ie
   input Real[:] num "coeffs of CT num (dec pwr)";
   input Real[:] den "coeffs of CT den (dec pwr)";
   input Real Ts "sampling time";
+  input Real ztc=1e-9 "set trailing coeff to 0 if smaller in mag, use neg val to disable";
   output Real[:] a;
   output Real[:] b;
 protected
@@ -25,7 +26,7 @@ for i in 1:degnum+1 loop
    pterm := num[i]*Functions.polymul(
                Functions.polypow({Ts,0},i-1),
                Functions.polypow({1,-1},degnum-i+1)
-            )/Ts^degnum;
+            );
    dtnum := Functions.polyadd(dtnum,pterm);
 end for;
 
@@ -33,16 +34,20 @@ for i in 1:degden+1 loop
    pterm := den[i]*Functions.polymul(
                Functions.polypow({Ts,0},i-1),
                Functions.polypow({1,-1},degden-i+1)
-            )/Ts^degden;
+            );
    dtden := Functions.polyadd(dtden,pterm);
 end for;
 
 if degden>degnum then
   dtnum := Functions.polymul(
              dtnum,
-             Functions.polypow({1,0},degden-degnum)
+             Functions.polypow({Ts,0},degden-degnum)
            );
 end if;
+
+while abs(dtnum[end])<ztc loop
+  dtnum := dtnum[1:end-1];
+end while;
 
 (a,b) := Functions.dttf2a1anb0bm(dtnum,dtden);
 
