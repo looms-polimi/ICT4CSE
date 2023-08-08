@@ -1,7 +1,7 @@
 within ICT4CSE.Functions;
 
 function c2d_a1anb0bm_ie
-  "continuous-time TF y/u = num/den & amping time Ts to a and b
+  "continuous-time TF y/u = num/den & sampling time Ts to a and b
    s.t. y(k) = a(1)y(k-1)...+a(n)y(k-n)+b(1)u(k)...+b(m+1)u(k-m),
    implicit Euler (backward difference) method"
   extends Modelica.Icons.Function;
@@ -17,41 +17,41 @@ protected
   Real[:] dtnum,dtden,pterm;
   
 algorithm
-degnum := size(num,1)-1;
-degden := size(den,1)-1;
-dtnum  := {0};
-dtden  := {0};
+  degnum := size(num,1)-1;
+  degden := size(den,1)-1;
+  dtnum  := {0};
+  dtden  := {0};
 
 //Functions.Utilities.print_real_vector(num, "num");
 //Functions.Utilities.print_real_vector(den, "den");
 
-for i in 1:degnum+1 loop
-   pterm := num[i]*Functions.polymul(
-               Functions.polypow({Ts,0},i-1),
-               Functions.polypow({1,-1},degnum-i+1)
-            );
-   dtnum := Functions.polyadd(dtnum,pterm);
-end for;
+  for i in 1:degnum+1 loop
+     pterm := num[i]*Functions.polymul(
+                 Functions.polypow({Ts,0},i-1),
+                 Functions.polypow({1,-1},degnum-i+1)
+              );
+     dtnum := Functions.polyadd(dtnum,pterm);
+  end for;
 
-for i in 1:degden+1 loop
-   pterm := den[i]*Functions.polymul(
-               Functions.polypow({Ts,0},i-1),
-               Functions.polypow({1,-1},degden-i+1)
-            );
-   dtden := Functions.polyadd(dtden,pterm);
-end for;
+  for i in 1:degden+1 loop
+     pterm := den[i]*Functions.polymul(
+                 Functions.polypow({Ts,0},i-1),
+                 Functions.polypow({1,-1},degden-i+1)
+              );
+     dtden := Functions.polyadd(dtden,pterm);
+  end for;
 
-if degden>degnum then
-  dtnum := Functions.polymul(
-             dtnum,
-             Functions.polypow({Ts,0},degden-degnum)
-           );
-end if;
+  if degden>degnum then
+    dtnum := Functions.polymul(
+               dtnum,
+               Functions.polypow({Ts,0},degden-degnum)
+             );
+  end if;
 
 //Functions.Utilities.print_real_vector(dtnum, "dtnum");
 //Functions.Utilities.print_real_vector(dtden, "dtden");
 
-(a,b) := Functions.dttf2a1anb0bm(dtnum,dtden,ztc);
+  (a,b) := Functions.dttf2a1anb0bm(dtnum,dtden,ztc);
 
 //Functions.Utilities.print_real_vector(a, "a");
 //Functions.Utilities.print_real_vector(b, "b");

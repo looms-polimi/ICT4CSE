@@ -2,7 +2,7 @@ within ICT4CSE.Test;
 
 model test_c2d_a1anb0bm_ie
   extends ICT4CSE.Icons.TestModel;
-  Real a[3],b[3];
+  Real a[:],b[3];
 
 
 equation
