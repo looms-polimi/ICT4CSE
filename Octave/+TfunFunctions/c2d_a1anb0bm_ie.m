@@ -28,7 +28,7 @@ for i=1:degnum+1
               PolyFunctions.polypow([Ts,0],i-1),
               PolyFunctions.polypow([1,-1],degnum-i+1)
            )/Ts^degnum;
-   dtnum = PolyFunctions.polyadd(dtnum,pterm)
+   dtnum = PolyFunctions.polyadd(dtnum,pterm);
 endfor
 
 for i=1:degden+1
@@ -36,7 +36,7 @@ for i=1:degden+1
               PolyFunctions.polypow([Ts,0],i-1),
               PolyFunctions.polypow([1,-1],degden-i+1)
            )/Ts^degden;
-   dtden = PolyFunctions.polyadd(dtden,pterm)
+   dtden = PolyFunctions.polyadd(dtden,pterm);
 endfor
 
 if degden>degnum
@@ -46,6 +46,6 @@ if degden>degnum
           );
 endif
 
-[a,b] = TfunFunctions.dttf2a1anb0bm(dtnum,dtden)
+[a,b] = TfunFunctions.dttf2a1anb0bm(dtnum,dtden);
 
 endfunction
