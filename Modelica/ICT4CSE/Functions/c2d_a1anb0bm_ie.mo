@@ -9,7 +9,7 @@ function c2d_a1anb0bm_ie
   input Real[:] num "coeffs of CT num (dec pwr)";
   input Real[:] den "coeffs of CT den (dec pwr)";
   input Real Ts "sampling time";
-  input Real ztc=1e-9 "set trailing coeff to 0 if smaller in mag, use neg val to disable";
+  input Real ztc=Constants.negligible_TF_coeff "set trailing coeff to 0 if smaller in mag, use neg val to disable";
   output Real[:] a;
   output Real[:] b;
 protected
@@ -21,6 +21,9 @@ degnum := size(num,1)-1;
 degden := size(den,1)-1;
 dtnum  := {0};
 dtden  := {0};
+
+//Functions.Utilities.print_real_vector(num, "num");
+//Functions.Utilities.print_real_vector(den, "den");
 
 for i in 1:degnum+1 loop
    pterm := num[i]*Functions.polymul(
@@ -45,10 +48,12 @@ if degden>degnum then
            );
 end if;
 
-while abs(dtnum[end])<ztc loop
-  dtnum := dtnum[1:end-1];
-end while;
+//Functions.Utilities.print_real_vector(dtnum, "dtnum");
+//Functions.Utilities.print_real_vector(dtden, "dtden");
 
-(a,b) := Functions.dttf2a1anb0bm(dtnum,dtden);
+(a,b) := Functions.dttf2a1anb0bm(dtnum,dtden,ztc);
+
+//Functions.Utilities.print_real_vector(a, "a");
+//Functions.Utilities.print_real_vector(b, "b");
 
 end c2d_a1anb0bm_ie;

@@ -7,8 +7,9 @@ function dttf2a1anb0bm
 
   input Real[:] num "coeffs of num (dec pwr)";
   input Real[:] den "coeffs of den (dec pwr)";
-  output Real[size(den,1)-1] a;
-  output Real[size(den,1)] b;
+  input Real ztc=Constants.negligible_TF_coeff "set trailing coeff to 0 if smaller in mag, use neg val to disable";
+  output Real[:] a;
+  output Real[:] b;
 protected
   Integer degnum, degden, reldeg;
   
@@ -18,4 +19,9 @@ algorithm
   reldeg := degden-degnum;
   a      := -den[2:end]/den[1];
   b      := vector([zeros(reldeg,1);num/den[1]]);
+  
+  while abs(b[end])<ztc loop
+    b := b[1:end-1];
+  end while;
+
 end dttf2a1anb0bm;

@@ -5,7 +5,7 @@ function polyadd
 
   input Real[:] cp1 "coeffs of poly 1 (dec pwr)";
   input Real[:] cp2 "coeffs of poly 2 (dec pwr)";
-  input Real zlc=1e-9 "set leading coeff to 0 if smaller in mag, use neg val to disable";
+  input Real zlc=Constants.negligible_TF_coeff "set leading coeff to 0 if smaller in mag, use neg val to disable";
   output Real[:] cpo  "coeffs of sum (dec pwr)";
   
 protected 

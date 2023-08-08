@@ -4,13 +4,16 @@ function polypow
   extends Modelica.Icons.Function;
 
   input Real[:] cp "coeffs of poly (dec pwr)";
-  input Integer n "exponent";
+  input Integer n "exponent (nonnegative)";
   output Real[:] cpo;
 
 algorithm
-  cpo := cp;
-  for i in 2:n loop
-    cpo := polymul(cpo,cp);
-  end for;
-
+  if n==0 then
+    cpo := {1};
+  else
+    cpo := cp;
+    for i in 2:n loop
+      cpo := polymul(cpo,cp);
+    end for;
+  end if;
 end polypow;
