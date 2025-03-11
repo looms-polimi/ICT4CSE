@@ -15,7 +15,7 @@ model E01_In_linear_region_all_equal
   parameter Real Pn[:] = {1};
   parameter Real Pd[:] = {10, 11, 1};
   
-  Modelica.Blocks.Sources.RealExpression SP(y = if time < 1 then 0 elseif time < 060 then 0.8
+  Modelica.Blocks.Sources.RealExpression SP(y = if time < 1 then 0 elseif time < 60 then 0.8
    elseif time < 120 then 1.2
    elseif time < 180 then 0.2
    elseif time < 240 then 0.8 else 0.5);
@@ -86,7 +86,7 @@ equation
   connect(SP.y, PIplusD_parallel_derr.SP);
   connect(SP.y, PIplusD_parallel_dout.SP);
   annotation(
-    experiment(StartTime = 0, StopTime = 500, Tolerance = 1e-06, Interval = 0.1),
+    experiment(StartTime = 0, StopTime = 300, Tolerance = 1e-06, Interval = 0.1),
     __OpenModelica_commandLineOptions = "--matchingAlgorithm=PFPlusExt --indexReductionMethod=dynamicStateSelection -d=initialization,NLSanalyticJacobian",
     __OpenModelica_simulationFlags(lv = "LOG_STDOUT,LOG_ASSERT,LOG_STATS", s = "rungekutta", variableFilter = ".*"));
 end E01_In_linear_region_all_equal;
