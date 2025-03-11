@@ -4,7 +4,7 @@ function polypow
   extends Modelica.Icons.Function;
 
   input Real[:] cp "coeffs of poly (dec pwr)";
-  input Integer n "exponent (nonnegative)";
+  input Integer n(min=0) "exponent (nonnegative)";
   output Real[:] cpo;
 
 algorithm

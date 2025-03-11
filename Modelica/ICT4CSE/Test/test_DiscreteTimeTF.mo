@@ -8,7 +8,7 @@ model test_DiscreteTimeTF
     Placement(visible = true, transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   ICT4CSE.Blocks.DiscreteTimeTF TF2(Ts = 0.05, den = {1, 0.5, 1}, num = {1})  annotation(
     Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  ICT4CSE.Blocks.DiscreteTimeTF TF3(den = {1, 4, 6, 4, 1}, num = {-1, -2.5, 1})  annotation(
+  ICT4CSE.Blocks.DiscreteTimeTF TF3(den = {1}, num = {1})  annotation(
     Placement(visible = true, transformation(origin = {10, -40}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
 equation
   connect(u.y, TF1.u) annotation(

@@ -1,0 +1,23 @@
+within ICT4CSE.ControlBlocks.Modulating.Digital;
+
+model Decoupler_2x2_lead_lag
+  extends ICT4CSE.Icons.DigitalController_200x200;
+  Modelica.Blocks.Interfaces.RealInput v1 annotation(
+    Placement(visible = true, transformation(origin = {-120, 56}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealOutput u1 annotation(
+    Placement(visible = true, transformation(origin = {-262, 4}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, 60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealInput v2 annotation(
+    Placement(visible = true, transformation(origin = {-110, 66}, extent = {{-20, -20}, {20, 20}}, rotation = 0), iconTransformation(origin = {-120, -58}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealOutput u2 annotation(
+    Placement(visible = true, transformation(origin = {-252, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {120, -60}, extent = {{-20, -20}, {20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealOutput bias1 annotation(
+    Placement(visible = true, transformation(origin = {-252, 14}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, 20}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
+  Modelica.Blocks.Interfaces.RealOutput bias2 annotation(
+    Placement(visible = true, transformation(origin = {-242, 24}, extent = {{-10, -10}, {10, 10}}, rotation = 0), iconTransformation(origin = {-120, -20}, extent = {{20, -20}, {-20, 20}}, rotation = 0)));
+equation
+
+annotation(
+    Icon(graphics = {Text(origin = {-1, -5}, extent = {{-71, 79}, {71, -79}}, textString = "decoupler
+2x2
+lead/lag")}));
+end Decoupler_2x2_lead_lag;

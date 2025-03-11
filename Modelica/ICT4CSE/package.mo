@@ -10,5 +10,5 @@ package ICT4CSE
 
 
   annotation(
-    uses(Modelica(version = "3.2.3")));
+    uses(Modelica(version = "4.0.0")));
 end ICT4CSE;

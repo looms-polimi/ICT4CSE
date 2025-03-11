@@ -16,7 +16,7 @@ equation
   y = yy;
   
 algorithm
-  when sample(t0,Ts) then
+  when sample(t0+1e-6*Ts,Ts) then
     uVec := cat(1,{u},uVec[1:end-1]);
     yy   := a1an*yVec+b0bm*uVec;
     yVec := cat(1,{yy},yVec[1:end-1]);

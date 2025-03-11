@@ -4,3 +4,9 @@ test_polypow
 test_dttf2a1anb0bm
 test_c2d_a1anb0bm_ie
 test_DiscreteTimeTF
+test_PID_PiplusD_ifb_derr_AD
+test_PIplusD_ifb_dout_AD
+test_PID_parallel_derr_AD
+test_PID_parallel_dout_AD
+test_PID_ISA_2dof_bias_tracking_locks_ovr
+test_PI_ifb_dout_AD
