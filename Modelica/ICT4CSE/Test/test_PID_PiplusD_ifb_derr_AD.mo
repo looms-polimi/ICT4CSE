@@ -1,7 +1,7 @@
 within ICT4CSE.Test;
 
 model test_PID_PiplusD_ifb_derr_AD
-  extends ICT4CSE.Icons.CourseworkModel;
+  extends ICT4CSE.Icons.TestModel;
   
   parameter Real K = 4;
   parameter Real Ti = 10;

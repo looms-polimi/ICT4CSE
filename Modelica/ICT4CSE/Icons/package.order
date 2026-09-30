@@ -4,7 +4,7 @@ ProcessBlock
 ControlBlock
 AnaloguePackage
 DigitalPackage
-CourseworkModel
+ExampleModel
 TestModel
 Modulating
 Logic
@@ -12,8 +12,5 @@ AnalogueController_200x200
 AnalogueController_200x400
 DigitalController_200x200
 DigitalController_200x400
-AnalogueController200x400
-AnalogueController200x200
-DigitalController200x400
-DigitalBlock200x200
-DigitalController200x200
+DigitalBlock_200x200
+
